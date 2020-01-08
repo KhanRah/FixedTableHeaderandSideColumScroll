@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   ScrollController headersController;
-  ScrollController calendarHeader;
+//  ScrollController calendarHeader;
   ScrollController staffController;
   SyncScrollController _syncScroller;
 
@@ -44,17 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     headersController=new ScrollController();
     staffController=new ScrollController();
-    calendarHeader=new ScrollController();
+//    calendarHeader=new ScrollController();
 
     _syncScroller = new SyncScrollController([headersController , staffController,]);
 
-    calendarHeader.addListener(_scrollListener);
+//    calendarHeader.addListener(_scrollListener);
 //    headersController.addListener(_scrollheaderListener);
 
   }
 
   _scrollListener() {
-    print('pixel Position ${calendarHeader.offset}');
+//    print('pixel Position ${calendarHeader.offset}');
 //    headersController.jumpTo(staffController.offset);
   }
   _scrollheaderListener() {
@@ -68,34 +68,35 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Container(
-                padding:EdgeInsets.all(10.0),child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[Text('Store Name'),Text('Filter')],),),
-              Expanded(
-                child: Container(
-                  padding:EdgeInsets.all(10.0),
-                  child: NotificationListener(
-//                    onNotification: (ScrollNotification scrollInfo) {
-//                      _syncScroller.processNotification(scrollInfo, calendarHeader);
-//                    },
-                    child: CustomScrollView(
-                      controller:calendarHeader ,
-                      slivers: <Widget>[
-                      SliverToBoxAdapter(child:Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[Container(color:Colors.blue,height:30,child: Text('Month')),Text('Daily')],) ,),
-                      SliverList(
-                        delegate: SliverChildListDelegate([
-                          completeCalendar()
-                        ]),
-                      )
-                    ],),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
+        body:completeCalendar()
+//        Container(
+//          child: Column(
+//            children: <Widget>[
+//              Container(
+//                padding:EdgeInsets.all(10.0),child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[Text('Store Name'),Text('Filter')],),),
+//              Expanded(
+//                child: Container(
+//                  padding:EdgeInsets.all(10.0),
+//                  child: NotificationListener(
+////                    onNotification: (ScrollNotification scrollInfo) {
+////                      _syncScroller.processNotification(scrollInfo, calendarHeader);
+////                    },
+//                    child: CustomScrollView(
+//                      controller:calendarHeader ,
+//                      slivers: <Widget>[
+//                      SliverToBoxAdapter(child:Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[Container(color:Colors.blue,height:30,child: Text('Month')),Text('Daily')],) ,),
+//                      SliverList(
+//                        delegate: SliverChildListDelegate([
+//
+//                        ]),
+//                      )
+//                    ],),
+//                  ),
+//                ),
+//              ),
+//            ],
+//          ),
+//        )
     );
   }
 
@@ -106,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
 //              height: 1200,
-              child: Column(
+              child: ListView(
 //              shrinkWrap: true,
 //              padding: EdgeInsets.all(5.0),
                 children: <Widget>[
